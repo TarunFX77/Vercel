@@ -5,7 +5,17 @@
     <meta charset="UTF-8">
 </head>
 <body style="background:#111;color:white;font-family:sans-serif;text-align:center;padding-top:100px;">
-    <h1>✅ Verification Successful</h1>
-    <p>You have been verified.</p>
+    <div id="msg">
+        <h1>⏳ Verifying...</h1>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const el = document.getElementById('msg');
+        if (params.get('verified')) {
+            el.innerHTML = '<h1>✅ Verification Successful</h1><p>You have been verified. You can close this tab.</p>';
+        } else if (params.get('error')) {
+            el.innerHTML = '<h1>❌ Verification Failed</h1><p>Something went wrong. Try again.</p>';
+        }
+    </script>
 </body>
 </html>
